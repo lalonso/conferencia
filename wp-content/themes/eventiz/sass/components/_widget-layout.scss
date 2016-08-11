@@ -1,0 +1,121 @@
+/* block */
+
+.#{$block-selector} {
+    margin-bottom: $block-module-margin-bottom;
+    position: relative;
+    padding: $block-module-padding;
+    background: transparent;
+    border-width: 0px;
+    border-style: solid;
+    .#{$block-heading-selector}{
+        /* color: $block-module-heading-color; */
+        padding: $block-module-heading-padding;
+        margin: $block-module-heading-margin;
+        text-transform: $block-module-heading-transform;
+        font-size: $block-module-heading-font-size;
+        position: relative;
+        z-index: 10;
+        letter-spacing: 2px;
+        line-height: 1.1;
+        > span{
+            padding: 0;
+            display:  inline-block;
+            position: relative;
+        }
+        .subtitle{
+            font-weight: normal;
+            font-size: 11px;
+            text-transform: none;
+             &:before{ display:none }
+        }    
+    }
+    .#{$block-content-selector} {
+        @include border-radius ($block-module-content-radius);
+        @include clearfix();
+        background-color: $block-module-content-bg;
+
+    }
+    .#{$block-heading-reversed-selector}{
+        @include rtl-margin-right(75px);
+    }
+
+    /* block styles */
+    &.nopadding{
+        .#{$block-content-selector}{
+            padding:0;
+            margin: 0;
+        }
+    }
+
+}
+
+// Contextual variations
+
+.#{$block-prefix}-default {
+  @include block-variant($panel-default-border, $panel-default-text, #000, $panel-default-border);
+}
+.#{$block-prefix}-primary {
+  @include block-variant($panel-primary-border, $panel-primary-text, $panel-primary-heading-bg, $panel-primary-border);
+}
+.#{$block-prefix}-success {
+  @include block-variant($panel-success-border, $panel-success-text, $panel-success-heading-bg, $panel-success-border);
+}
+.#{$block-prefix}-info {
+  @include block-variant($panel-info-border, $panel-info-text, $panel-info-heading-bg, $panel-info-border);
+}
+.#{$block-prefix}-warning {
+  @include block-variant($panel-warning-border, $panel-warning-text, $panel-warning-heading-bg, $panel-warning-border);
+}
+.#{$block-prefix}-danger {
+  @include block-variant($panel-danger-border, $panel-danger-text, $panel-danger-heading-bg, $panel-danger-border);
+}
+
+/**
+ * Styling Css for widgets in Sidebar Left Static
+ */
+.#{$block-prefix}-static{ 
+    .#{$block-heading-selector}{
+        color:#FFFFFF;
+    }
+    ul li { border:none } 
+}
+
+.wpo-sidebar{
+    .widget{
+        margin-bottom: 20px;
+        .widget-title{
+            padding-left: 22px;
+            position: relative;
+            padding-bottom: 30px;
+            &:after{
+                content: "";
+                position: absolute;
+                @include size(10px, 10px);
+                border: 2px solid $theme-color;
+                left: 0;
+                top: 12px;
+                z-index: 1;
+                @include border-radius(50%);
+            }
+        }
+    }
+}
+
+/**
+ * Styling Css for widgets in footer layout
+ */
+.pbr-footer{
+    .#{$block-selector} {
+        .#{$block-heading-selector}{
+            font-size: 18px;
+            border:none;
+            margin-bottom: 0;
+            & > span{
+                padding: 0px 0px;
+                &:before{
+                    content: none;
+                }
+            }
+        }
+    }   
+}
